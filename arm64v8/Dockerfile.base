@@ -1,0 +1,9 @@
+FROM scratch
+ADD ./openwrt-armvirt-64-default-rootfs.tar.gz /
+ADD ./network /etc/config/
+ADD ./boot-openwrt-gateway.sh /sbin/
+RUN mkdir -p /etc/sysconfig && mv /etc/passwd /etc/sysconfig && mv /etc/group /etc/sysconfig && echo 0xDEADBEEF > /etc/config/google_fu_mode && chmod 755 /sbin/boot-openwrt-gateway.sh 
+#&& echo /sbin/boot-openwrt-gateway.sh > /etc/rc.local && echo exit 0 >> /etc/rc.local
+CMD ["/bin/sh","-c",'/sbin/boot-openwrt-gateway.sh && /sbin/init'"]
+VOLUME ["/etc/config","/etc/sysconfig","/etc/dropbear"]
+
