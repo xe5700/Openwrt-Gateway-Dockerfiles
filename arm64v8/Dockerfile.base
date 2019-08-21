@@ -3,7 +3,7 @@ ADD ./openwrt-armvirt-64-default-rootfs.tar.gz /
 ADD ./network /etc/config/
 ADD ./boot-openwrt-gateway.sh /sbin/
 RUN mkdir -p /etc/sysconfig && echo 0xDEADBEEF > /etc/config/google_fu_mode && chmod 755 /sbin/boot-openwrt-gateway.sh \
-&& mv /etc/hostname /etc/sysconfig && echo DEVICE_PRODUCT=\'ARMv8_64 Docker Image\'
+&& mv /etc/hostname /etc/sysconfig
 #&& cp /etc/passwd /etc/sysconfig && cp /etc/group /etc/sysconfig 
 CMD ["/sbin/init"]
 ENTRYPOINT ["/sbin/boot-openwrt-gateway.sh"]
