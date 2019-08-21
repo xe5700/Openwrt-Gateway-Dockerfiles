@@ -1,7 +1,8 @@
 #!/bin/bash
-if [ ! -d "/etc/passwd" ]; then
-    ln -s /etc/sysconfig/passwd /etc/passwd
+if [ ! -f "/etc/hostname" ]; then
+    ln -s /etc/sysconfig/hostname /etc/hostname
 fi
-if [ ! -d "/etc/group" ]; then
-    ln -s /etc/sysconfig/group /etc/group
+
+if [ ! -f "/etc/firewall.user" ]; then
+    ln -s /etc/sysconfig/firewall.user /etc/firewall.user
 fi
